@@ -1,4 +1,20 @@
 Aitel::Application.routes.draw do
+
+  root :to => 'shops#index'
+
+  resources :users do
+  end
+
+
+  resources :shops do
+  end
+
+  resources :sessions, only: [:new]do
+  end
+  resource :session, only: [:create, :destroy] do
+  end
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
