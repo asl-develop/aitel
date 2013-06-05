@@ -5,8 +5,22 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :test, :development do
+  gem 'sqlite3'
+  gem "rails-erd"
 
+  gem 'rspec-rails'
+  gem 'rails3-generators'
+  gem 'webrat'
+  gem 'spork'
+  gem 'rb-fsevent'
+  gem 'guard-spork'
+  gem 'guard-rspec'
+  gem 'growl' if /darwin/ =~ RUBY_PLATFORM
+  gem 'libnotify' if /linux/ =~ RUBY_PLATFORM
+  gem 'rb-inotify' if /linux/ =~ RUBY_PLATFORM
+
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -15,7 +29,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
 end
