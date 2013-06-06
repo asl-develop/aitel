@@ -3,7 +3,7 @@ class Customer::CustomerBase < ApplicationController
   before_filter :authorize
   before_filter :login_required
 
-#  layout "provider"
+  layout "customer"
 
   def authorize
     if session[:user_id]
