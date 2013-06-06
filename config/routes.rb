@@ -11,6 +11,11 @@ Aitel::Application.routes.draw do
   resources :shops do
   end
 
+  resources :vips do
+  end
+  resources :messages do
+  end
+
   resources :sessions, only: [:new]do
   end
   resource :session, only: [:create, :destroy] do
