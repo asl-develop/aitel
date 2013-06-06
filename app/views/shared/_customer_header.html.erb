@@ -1,0 +1,4 @@
+<% if @current_user %>
+  <%= @current_user.name %>でログイン中 | <%= link_to 'ログアウト', [:customer, :session] ,method: :delete %>
+<% end %>
+
