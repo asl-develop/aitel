@@ -1,0 +1,27 @@
+<div id="search-box">
+NEW MESSAGE
+<%= form_for :search_condition, url: vips_path ,
+  html: {method: :get, :'data-type' => 'json', remote: true, id: 'search-form' } do  |f| %>
+  名前：<%= f.text_field :name %><br/>
+  特徴：<%= f.text_field :property %><br/>
+  <%= f.submit '検索' %>
+<% end %>
+</div>
+
+<% if @vips.present? %>
+  <%= form_for @message do |f| %>
+    
+    <h5>宛先</h5>
+    <div id="to_users">
+      <% @vips.each do |vip| %>
+        <%= check_box_tag("to_users[]", vip.user.id  ) %><%= vip.user.name %><br/>
+      <% end %>
+    </div>
+    <h5>メッセージ</h5>
+
+    <%= f.text_field :title %><br />
+    <%= f.text_area :content %><br />
+    <%= f.submit %>
+
+  <% end %>
+<% end %>

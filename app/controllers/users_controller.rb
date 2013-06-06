@@ -1,8 +1,12 @@
+#coding: utf-8
 class UsersController < ShopBase
+  before_filter :load_search_condition
   # GET /users
   # GET /users.json
   def index
-    @users = @current_shop.users
+
+    @users = @current_shop.users.includes(:vips)
+    @users = User.search( @search_condition, @users)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,5 +83,11 @@ class UsersController < ShopBase
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def load_search_condition
+    @search_condition = OpenStruct.new( params[:search_condition] )
+    
   end
 end
