@@ -24,7 +24,7 @@ Aitel::Application.routes.draw do
 
   # お客側
   namespace :customer do
-    root :to => 'users#index'
+    root :to => 'shops#index'
 
     resources :sessions, only: [:new] do
     end
@@ -33,6 +33,10 @@ Aitel::Application.routes.draw do
 
     resources :users do
     end
+
+    resources :shops, only: [:index] do
+    end
+
   end
 
 
