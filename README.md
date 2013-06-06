@@ -5,7 +5,7 @@
 ### リポジトリ取得
 
 ```bash
-$ git clone git@github.com:miss-matching/sample-blog-app.git
+$ git clone http://github.com/asl-develop/aitel.git
 
 ### ルーテイングでまよったら
 
