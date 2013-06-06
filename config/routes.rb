@@ -1,3 +1,5 @@
+# coding: utf-8
+
 Aitel::Application.routes.draw do
 
   root :to => 'shops#index'
@@ -13,6 +15,21 @@ Aitel::Application.routes.draw do
   end
   resource :session, only: [:create, :destroy] do
   end
+
+
+  # お客側
+  namespace :customer do
+    root :to => 'users#index'
+
+    resources :sessions, only: [:new] do
+    end
+    resource :session, only: [:create, :destroy] do
+    end
+
+    resources :users do
+    end
+  end
+
 
 
   # The priority is based upon order of creation:
