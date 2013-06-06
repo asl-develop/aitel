@@ -1,3 +1,4 @@
+#coding: utf-8
 class User < ActiveRecord::Base
   has_many :vips
   has_many :shops , through: :vips
