@@ -11,11 +11,9 @@ class User < ActiveRecord::Base
     def authenticate(email, password)
       user = find_by_email(email)
       
-      puts "++++++++++++"
       if user.present? && 
         user.password_digest == password
         #BCrypt::Password.new(shop.password_digest) == password
-        puts "***********"
         return user
       else
         return nil
