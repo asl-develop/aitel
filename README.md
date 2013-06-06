@@ -1,80 +1,61 @@
 # aitel
 
-## 始め方
+# ワークフロー
 
-### リポジトリ取得
+リポジトリを共有してのpull request開発です。
+
+## リポジトリ取得
 
 ```bash
 $ git clone http://github.com/asl-develop/aitel.git
 
-### ルーテイングでまよったら
-
-```bash
-$ bundle exec rake routes
 ```
 
-### 本流のリポジトリの変更を自分のリポジトリに適用
-
+## リモートに追加
 ```bash
-# 以下は最初だけ
-# 本流のリポジトリをリモートに追加
-$ git remote add upstream http://github.com/asl-develop/aitel.git
-
-# 以降は毎回
-# 本流の変更をフェッチ
-$ git fetch upstream
-
-# 本流にあって自分のリポジトリにないコミットを確認
-$ git log --no-merges ^HEAD upstream/master
-commit bb77b08e041175559be9639db6ecb5af05f7ccb7
-Author: Tajima Junpei <p.baleine@gmail.com>
-Date:   Thu May 2 08:51:29 2013 +0900
-
-    add `vendor/bundle` to gitignore
-
-# 本流に変更があったのでこれを自分のリポジトリにリベース
-$ git rebase upstream/master
+$ git remote add origin http://github.com/asl-develop/aitel.git
 ```
 
-## Workflow
+## 修正の度に行う
 
-以下の作業は最初だけ行う
 
-### miss-matching/sample-blog-appを自分のアカウント用にフォークする
-
-* Github上のリポジトリをブラウザで開く(https://github.com/miss-matching/sample-blog-app)
-
-* 右上の「Fork」クリックして自分のアカウントを選択する、Github上にACCOUNT_NAME/sample-blog-appリポジトリができる
-
-* ローカルにACCOUNT_NAME/sample-blog-appリポジトリをクローンする
-
-```bash
-$ git clone git@github.com:p-baleine/sample-blog-app.git
-```
-
-以下の作業は毎回行う、以下はissueベースの例
-
-### Pull Request
-
-* 本流に追従している状態でトピックブランチを切る
+### 修正の前
+* トピックブランチを切る
 
 ```bash
 $ git checkout -b topic-test-pass origin/master
 ```
 
-* ソース修正してコミット、プッシュする
+### 修正後
+
+* ソース修正してコミットする
 
 ```bash
-# ソース修正後
 $ git add .
-# コミット
-# コミットメッセージに`closes #<issue number>`を含めるとgithub上のissueを勝手にクローズしてくれる
-$ git commit -m "functionalテストを通す, closes #2"
-# 自分のリモートのトピックブランチにプッシュ
-$ git push origin topic-test-pass
+$ git commit -m '本当はadd .じゃなくて git statusとか見て確認してね'
 ```
 
-* Github上の自分のリポジトリを開く(https://github.com/ACCOUNT_NAME/sample-blog-app)
+### 本流の修正を内側でマージ(一応動作確認したい)
+* 本流の変更を取得
+```bash
+$ git fetch origin master
+```
+* 本流にあって自分のリポジトリに無いコミットを確認
+```bash
+$ git log --no-merges ^HEAD origin/master
+```
+* 変更があるので自分のリポジトリにリベース
+```bash
+$ git rebase origin/master
+```
+
+* 動作に問題がなければ自分のリモートのトピックブランチにプッシュ
+```bash
+$ git push origin topic-test-pass
+```
+### Pull Request
+
+* Github上の自分のリポジトリを開く(https://github.com/asl-develop/aitel.git)
 
 * 左上のプルダウンメニューから`topic-test-pass`ブランチを選択する
 
@@ -82,7 +63,7 @@ $ git push origin topic-test-pass
 
 ### マージ
 
-* Github上の本流のリポジトリを開く(https://github.com/miss-matching/sample-blog-app)
+* Github上の本流のリポジトリを開く(https://github.com/asl-develop/aitel.git)
 
 * [Pull Requests]をクリックして当該Pull Requestを開く
 
