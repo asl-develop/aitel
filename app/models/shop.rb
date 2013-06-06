@@ -2,6 +2,7 @@
 class Shop < ActiveRecord::Base
   has_many :vips
   has_many :users , through: :vips
+  has_many :messages
   attr_accessible :email, :login_id, :name, :password_digest
 
 
