@@ -18,7 +18,7 @@ $ bundle exec rake routes
 ```bash
 # 以下は最初だけ
 # 本流のリポジトリをリモートに追加
-$ git remote add upstream git@github.com:miss-matching/sample-blog-app.git
+$ git remote add upstream http://github.com/asl-develop/aitel.git
 
 # 以降は毎回
 # 本流の変更をフェッチ
