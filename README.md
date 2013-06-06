@@ -49,7 +49,7 @@ $ git rebase upstream/master
 * ローカルにACCOUNT_NAME/sample-blog-appリポジトリをクローンする
 
 ```bash
-$ git clone git@github.com:p-baleine/sample-blog-app.git
+$ git clone http://github.com/asl-develop/aitel.git
 ```
 
 以下の作業は毎回行う、以下はissueベースの例
