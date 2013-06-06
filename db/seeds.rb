@@ -9,7 +9,7 @@ user = FactoryGirl.create( :user, email: 'test_user@test.com', password_digest: 
 
 #10.times { FactoryGirl.create( :user_with_want )}
 
-shop = FactoryGirl.create( :shop, login_id: "test_shop, name", name: "AISEL", email: 'test_shop@test.com', password_digest: 'password')
+shop = FactoryGirl.create( :shop, login_id: "test_shop", name: "AISEL", email: 'test_shop@test.com', password_digest: 'password')
 
 FactoryGirl.create( :vip, user_id: user.id, shop_id: shop.id, property: 'password')
 
