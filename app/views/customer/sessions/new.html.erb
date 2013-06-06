@@ -1,0 +1,12 @@
+
+<h4>ログイン</h4>
+<%= form_tag [:customer, :session] do %>
+<%= label_tag :session, "e-mailアドレス" %>
+<%= text_field_tag "email", "", class: "span12" %>
+<%= label_tag :session, "パスワード" %>
+<%= password_field_tag "password", "", class: "span12" %>
+<%= submit_tag "ログイン" , class: "btn btn-block" %></td>
+<% end %>
+
+<%= link_to "=>会員の新規登録" , controller: :users, action: :new %>
+
