@@ -38,7 +38,7 @@ $ git commit -m '本当はadd .じゃなくて git statusとか見て確認し�
 ### 本流の修正を内側でマージ(一応動作確認したい)
 * 本流の変更を取得
 ```bash
-$ git fetch origin master
+$ git fetch origin
 ```
 * 本流にあって自分のリポジトリに無いコミットを確認
 ```bash
