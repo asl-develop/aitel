@@ -6,11 +6,5 @@ FactoryGirl.define do
     sequence(:email) { |n| "user#{n}@test.com" }
     password_digest "password"
     
-    factory :user_with_want, parent: :user do
-      after(:create){ |user| create(:want, user: user)} 
-    end
   end
-
-
-
 end
