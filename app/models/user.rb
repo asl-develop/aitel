@@ -8,14 +8,6 @@ class User < ActiveRecord::Base
 
   users = User.arel_table
 
-  scope :yet_to_be_invited_by,
-    ->(shop){
-      invitations = Invitation.arel_table
-      where( 
-        Invitation.by( shop ).inviting.where(
-          invitations[:want_id].eq( wants[:id])).exists.not)
-      }
-
   scope :not_invited_by,
     ->(shop){
       vip_requests = VipRequest.arel_table
