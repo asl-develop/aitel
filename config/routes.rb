@@ -16,6 +16,10 @@ Aitel::Application.routes.draw do
   resources :messages do
   end
 
+  resources :vip_requests, only: [:index, :show, :new, :create, :update, :destroy] do
+    get 'targets_for', on: :collection
+  end
+
   resources :sessions, only: [:new]do
   end
   resource :session, only: [:create, :destroy] do

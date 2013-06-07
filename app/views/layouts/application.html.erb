@@ -9,6 +9,11 @@
 <body>
 
 <%= render 'shared/shop_header' %>
+<% if flash.notice %>
+<div class="alert">
+  <strong><%= flash.notice %></strong>
+</div>
+<% end %>
 <%= yield %>
 
 </body>
