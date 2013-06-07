@@ -1,0 +1,6 @@
+<%= user.name %><br> 
+<%= form_for  :vip_request, url: { action: :create, method: :post}   do |f| %>
+  <%= f.hidden_field :user_id, value: user.id %>
+  <%= f.hidden_field :status, value: VipRequest::STATUS_INVITING %>
+  <%= f.submit 'V.I.P.として招待' %>
+<% end %>

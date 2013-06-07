@@ -5,6 +5,17 @@ class User < ActiveRecord::Base
   has_many :messages
   attr_accessible :email, :name, :password_digest
 
+
+  users = User.arel_table
+
+  scope :not_invited_by,
+    ->(shop){
+      vip_requests = VipRequest.arel_table
+      where(
+        VipRequest.by( shop ).requesting.where(
+          vip_requests[:user_id].eq( users[:id])).exists.not)
+      }
+
   class << self
 
     def authenticate(email, password)
@@ -24,6 +35,9 @@ class User < ActiveRecord::Base
       return_rel = rel
       if condition.name.present?
         return_rel = return_rel.where( name: condition.name)
+      end
+      if condition.email.present?
+        return_rel = return_rel.where( email: condition.email)
       end
       return return_rel
     end

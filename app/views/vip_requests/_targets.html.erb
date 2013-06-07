@@ -1,0 +1,5 @@
+<% if users.present? %>
+  <% users.each do |user| %>
+    <%= render 'single_new_unit', user: user %>
+  <% end %>
+<% end %>
