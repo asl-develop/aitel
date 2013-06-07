@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130606020200) do
+ActiveRecord::Schema.define(:version => 20130607020717) do
 
   create_table "messages", :force => true do |t|
     t.integer  "user_id"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(:version => 20130606020200) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  create_table "vip_requests", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "shop_id"
+    t.integer  "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "vip_requests", ["shop_id"], :name => "index_vip_requests_on_shop_id"
+  add_index "vip_requests", ["user_id"], :name => "index_vip_requests_on_user_id"
 
   create_table "vips", :force => true do |t|
     t.integer  "user_id"
