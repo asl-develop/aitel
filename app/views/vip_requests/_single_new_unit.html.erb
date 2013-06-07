@@ -1,6 +1,9 @@
-<%= user.name %><br> 
-<%= form_for  :vip_request, url: { action: :create, method: :post}   do |f| %>
+<div id="invite-unit">
+<%= form_for  :vip_request, url: { action: :create, method: :post},
+  html: {remote: true, id: 'invite-user-form'} do |f| %>
+  <%= user.name %><br> 
   <%= f.hidden_field :user_id, value: user.id %>
   <%= f.hidden_field :status, value: VipRequest::STATUS_INVITING %>
-  <%= f.submit 'V.I.P.として招待' %>
+  <input type="button" value="V.I.P.として招待" id="invite-user-btn"> 
 <% end %>
+</div>
