@@ -1,0 +1,23 @@
+<h1>Listing Vip Requests</h1>
+
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>状態</th>
+    <th></th>
+  </tr>
+
+<% @vip_requests.each do |vip_request| %>
+  <tr>
+    <td><%= vip_request.user.name %></td>
+    <td><%= vip_request.user.email %></td>
+    <td><%= vip_request.status %></td>
+    <td><%= link_to '取り消す！' ,vip_request, method: :delete, data: {confirm: 'Are you Sure?' }  %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

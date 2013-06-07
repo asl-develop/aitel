@@ -5,7 +5,7 @@ class UsersController < ShopBase
   # GET /users.json
   def index
 
-    @users = @current_shop.users.includes(:vips)
+    @users = User.all
     @users = User.search( @search_condition, @users)
 
     respond_to do |format|
