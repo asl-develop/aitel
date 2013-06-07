@@ -1,0 +1,25 @@
+<h1>Listing Message</h1>
+
+
+<table>
+  <tr>
+    <th>日時</th>
+    <th>お店</th>
+    <th>タイトル</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @messages.each do |message| %>
+  <tr>
+    <td><%= message.created_at %></td>
+    <td><%= message.shop.name %></td>
+    <td><%= message.title %></td>
+    <td><%= link_to 'Show', customer_message_path(message) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
