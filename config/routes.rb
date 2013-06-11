@@ -2,11 +2,11 @@
 
 Aitel::Application.routes.draw do
 
+
   root :to => 'shops#index'
 
   resources :users do
   end
-
 
   resources :shops do
   end
@@ -47,6 +47,10 @@ Aitel::Application.routes.draw do
     resources :vip_requests, only: [:index] do
       member {put "approve", "reject"} # 承認, 拒否
     end
+
+    resources :wants, only:[ :new, :create ] do
+    end
+
   end
 
 
