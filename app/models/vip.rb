@@ -2,7 +2,7 @@
 class Vip < ActiveRecord::Base
   belongs_to :user
   belongs_to :shop
-  attr_accessible :property
+  attr_accessible :property, :user_id, :shop_id
 
   class << self
     def search( condition, in_rel )
