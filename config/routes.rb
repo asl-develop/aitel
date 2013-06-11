@@ -25,6 +25,10 @@ Aitel::Application.routes.draw do
   resource :session, only: [:create, :destroy] do
   end
 
+  resources :answers, only: [:index] do
+    member {put "consent", "reject"} # 了解, 拒否
+  end
+
 
   # お客側
   namespace :customer do
