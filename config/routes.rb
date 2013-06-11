@@ -61,7 +61,11 @@ Aitel::Application.routes.draw do
     resources :answers, only: [:index] do
     end
 
-    resources :reserves, only: [:create] do
+    resources :reserves, only: [:create, :show] do
+      member do
+        put 'cancel'
+        put 'check_in'
+      end
     end
 
 

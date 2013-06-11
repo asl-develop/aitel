@@ -1,7 +1,7 @@
 class Customer::ReservesController < Customer::CustomerBase
-  def new
-    @want = Want.new
-    @vips = @current_user.vips
+
+  def show 
+    @reserve = Reserve.includes(:shop).find(params[:id])
   end
 
   def create
@@ -15,7 +15,29 @@ class Customer::ReservesController < Customer::CustomerBase
       answer.selected = Answer::SELECTED
       answer.save!
     end
-    redirect_to [:customer, :answers]
+    redirect_to [:customer, @reserve]
+  end
+
+  def check_in
+    @reserve = Reserve.find( params[:id]).to_checked_in_state!
+    if @reserve.save
+      redirect_to [:customer,  @reserve]
+    else
+      # todo error hundling
+      hogehoge
+    end
+
+  end
+
+  def cancel
+    @reserve = Reserve.find( params[:id]).to_canceled_state!
+    if @reserve.save
+      redirect_to [:customer,  @reserve]
+    else
+      # todo error hundling
+      hogehoge
+    end
+
   end
 
 end
