@@ -2,5 +2,7 @@
   <%= @current_user.name %>でログイン中 | <%= link_to 'ログアウト', [:customer, :session] ,method: :delete %>
 <% end %>
 <br>
-<%= link_to 'お気に入りのお店', [:customer, :shops] %> / <%= link_to 'MESSAGE', [:customer, :messages] %>
+<%= link_to 'お気に入りのお店', [:customer, :shops] %> / 
+<%= link_to 'MESSAGE', [:customer, :messages] %> / 
+<%= link_to 'VIP REQUEST!', [:customer, :vip_requests] %>
 
