@@ -6,6 +6,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'factory_girl_rails'
+gem 'active_decorator'
 
 group :test, :development do
   gem 'sqlite3'

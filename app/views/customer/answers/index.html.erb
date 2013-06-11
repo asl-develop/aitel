@@ -1,0 +1,8 @@
+INDEX!<br>
+<div id="answers-list">
+<% @answers.each do |ans| %>
+  <div class="well">
+    <%= render 'single_answer', answer: ans %>
+  </div>
+<% end %>
+</div>

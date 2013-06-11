@@ -11,5 +11,10 @@ class Answer < ActiveRecord::Base
   STATUS_OK = 1
   STATUS_NG = 2
 
-  
+  SELECTED = 1
+  NON_SELECTED =0 
+
+  def ok?
+    self.status == STATUS_OK
+  end
 end
