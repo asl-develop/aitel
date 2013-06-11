@@ -3,6 +3,8 @@
 Aitel::Application.routes.draw do
 
 
+  get "reserves/create"
+
   root :to => 'shops#index'
 
   resources :users do
@@ -32,6 +34,7 @@ Aitel::Application.routes.draw do
 
   # お客側
   namespace :customer do
+
     root :to => 'users#index'
 
     resources :sessions, only: [:new] do
@@ -54,6 +57,13 @@ Aitel::Application.routes.draw do
 
     resources :wants, only:[ :new, :create ] do
     end
+
+    resources :answers, only: [:index] do
+    end
+
+    resources :reserves, only: [:create] do
+    end
+
 
   end
 
