@@ -3,9 +3,9 @@ module AnswerDecorator
 
   def display_status
     case status
-    when 0 then "未回答"
-    when 1 then "OKです！"
-    when 2 then "NGです！"
+    when Answer::STATUS_WAITING then "未回答"
+    when Answer::STATUS_OK then "OKです！"
+    when Answer::STATUS_NG then "NGです！"
     end
   end
 end

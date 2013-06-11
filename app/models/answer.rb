@@ -15,6 +15,6 @@ class Answer < ActiveRecord::Base
   NON_SELECTED =0 
 
   def ok?
-    self.status == 1
+    self.status == STATUS_OK
   end
 end
