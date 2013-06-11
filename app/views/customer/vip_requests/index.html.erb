@@ -1,0 +1,23 @@
+<h1>NEW VIP_REQUESTS</h1>
+
+
+<table>
+  <tr>
+    <th>日時</th>
+    <th>お店</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @vip_requests.each do |vip_request| %>
+  <tr>
+    <td><%= vip_request.created_at %></td>
+    <td><%= vip_request.shop.name %></td>
+    <td><%= link_to '承認', approve_customer_vip_request_path(vip_request), method: :put, confirm: "承認しますか？" %></td>
+    <td><%= link_to '拒否', reject_customer_vip_request_path(vip_request), method: :put, confirm: "拒否しますか？" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

@@ -41,7 +41,11 @@ Aitel::Application.routes.draw do
     resources :shops, only: [:index] do
     end
 
-    resources :messages do
+    resources :messages, only: [:index, :show] do
+    end
+
+    resources :vip_requests, only: [:index] do
+      member {put "approve", "reject"} # 承認, 拒否
     end
   end
 
