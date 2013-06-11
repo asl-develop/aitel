@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :vips
   has_many :shops , through: :vips
   has_many :messages
+  has_many :wants
   attr_accessible :email, :name, :password_digest
 
 

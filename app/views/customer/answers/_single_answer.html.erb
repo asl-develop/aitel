@@ -1,0 +1,13 @@
+<%= answer.id %> | <%= answer.shop.name%> | <%= answer.display_status %> | <%= answer.selected %>
+<% if answer.ok? %>
+  <br><a href="#" id="reserve-sw" name="<%= "reserve-#{answer.id}"%>" >【予約する】</a>
+<% end %><br>
+<div id="<%= "reserve-#{answer.id}" %>" class="action-unit">
+<%= form_for [:customer, @reserve] do |f| %>
+  <%= f.hidden_field :shop_id, value: answer.shop_id %>
+  <%= f.hidden_field :status, value: 0 %>
+  <%= hidden_field :ans_id, :value, value: answer.id %>
+  <%= f.datetime_select :expected_time ,{}, {class: 'span2'}%><br>
+  <%= f.submit '予約する', class: 'btn' %>
+<% end %>
+</div>
