@@ -1,0 +1,25 @@
+<h1>Answer List</h1>
+
+
+<table>
+  <tr>
+    <th>人数</th>
+    <th>日時</th>
+    <th>名前</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @answers.each do |answer| %>
+  <tr>
+    <td><%= answer.want.amount %></td>
+    <td><%= answer.want.from_date %></td>
+    <td><%= answer.want.user.name %></td>
+    <td><%= link_to 'OK', consent_answer_path(answer), method: :put, confirm: "OKと返事しますか？" %></td>
+    <td><%= link_to 'NG', reject_answer_path(answer), method: :put, confirm: "NGと返事しますか？" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
