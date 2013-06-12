@@ -1,0 +1,35 @@
+<h1>Editing V.I.P.</h1>
+
+<% if @vip.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@vip.errors.count, "error") %> prohibited this vip from being saved:</h2>
+
+    <ul>
+    <% @vip.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<p>名前：
+  <%= @vip.user.name %>
+</p>
+<p>e-mailアドレス：
+  <%= @vip.user.email %>
+</p>
+
+
+<%= form_for(@vip) do |f| %>
+  <div class="field">
+    <%= f.label :property %><br />
+    <%= f.text_area :property %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Show', @vip %> |
+<%= link_to 'Back', vips_path %>
