@@ -13,8 +13,16 @@ class Customer::WantsController < Customer::CustomerBase
       @want.answers.build( shop_id: shop_id, status: 0 ,selected: 0 )
     end
 
-    @want.save
-
+    ActiveRecord::Base.transaction do
+      Want.lock_all_own_by(@current_user)
+      @want.save!
+    end
+    
     redirect_to new_customer_want_path
+    
+    rescue => e
+      puts e
+      puts e.backtrace
+      render new_customer_want_path
   end
 end
