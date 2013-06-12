@@ -1,0 +1,20 @@
+
+<%= form_for arrival_log do |f| %>
+<div id="myModal<%=vip.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel"><%= vip.user.name %></h3>
+  </div>
+  <div class="modal-body">
+
+  <%= f.hidden_field :user_id, value: vip.user_id %>
+  <%= f.hidden_field :shop_id, value: vip.shop_id %>
+  <%= f.datetime_select :arrival_time %>
+    
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <%= f.submit '来店履歴を登録',class: 'btn btn-primary'  %>
+  </div>
+</div>
+<% end %>

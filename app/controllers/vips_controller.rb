@@ -8,6 +8,8 @@ class VipsController < ShopBase
     @vips = @current_shop.vips.includes( :user )
     @vips = Vip.search( @search_condition, @vips ).includes(:user )
 
+    @new_arrival_log = ArrivalLog.new
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @vips.to_json(:include => [:user]) }
