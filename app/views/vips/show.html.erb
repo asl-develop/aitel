@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>名前:</b>
+  <%= @vip.user.name %>
+</p>
+
+<p>
+  <b>e-mailアドレス:</b>
+  <%= @vip.user.email %>
+</p>
+
+<p>
+  <b>特徴:</b>
+  <%= @vip.property %>
+</p>
+
+
+<%= link_to 'Edit', edit_vip_path(@vip) %> |
+<%= link_to 'Back', vips_path %>

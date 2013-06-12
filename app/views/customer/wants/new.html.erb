@@ -11,7 +11,6 @@
     <% @vips.each do |vip| %>
       <%= check_box_tag("answer_ids[]", vip.shop.id  ) %><%= vip.shop.name %><br/>
     <% end %><br>
-    <%= f.submit '募集!', class: 'btn' %><br>
-
+    <%= f.submit '募集!', confirm: "募集しますか？", class: 'btn' %><br>
   <% end %>
 

@@ -14,7 +14,6 @@
     <th>特徴</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @vips.each do |vip| %>
@@ -23,7 +22,6 @@
     <td><%= vip.user.email %></td>
     <td><%= vip.property %></td>
     <td><%= link_to 'Show', vip %></td>
-    <td><%= link_to 'Edit', edit_user_path(vip) %></td>
     <td><%= link_to 'Destroy', vip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
