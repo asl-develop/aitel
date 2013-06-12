@@ -20,4 +20,14 @@ class Reserve < ActiveRecord::Base
     self
   end
 
+  def to_reserved_state!
+    self.status = STATUS_RESERVED
+    self
+  end
+
+  def to_rejected_state!
+    self.status = STATUS_REJECTED
+    self
+  end
+
 end

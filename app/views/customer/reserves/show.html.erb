@@ -1,8 +1,9 @@
 <div class="show-reserve well">
   お店の名前：<%= @reserve.shop.name %><br>
+  日時：<%= mmddhhmm_ja( @reserve.expected_time ) %><br>
   状態：<%= @reserve.display_status %><br>
 
-  操作：<%= @reserve.customers_action_link %>
+  <%= @reserve.customers_action_link %>
 
 </div>
 
