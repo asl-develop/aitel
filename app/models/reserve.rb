@@ -1,7 +1,6 @@
 class Reserve < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :shop
-  attr_accessible :shop_id, :expected_time, :status
+  include VipAssosiation
+  attr_accessible :expected_time, :status
 
   STATUS_ASKING = 0
   STATUS_RESERVED = 1

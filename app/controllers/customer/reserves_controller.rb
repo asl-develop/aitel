@@ -20,13 +20,16 @@ class Customer::ReservesController < Customer::CustomerBase
 
   def check_in
     @reserve = Reserve.find( params[:id]).to_checked_in_state!
-    if @reserve.save
-      redirect_to [:customer,  @reserve]
-    else
-      # todo error hundling
-      hogehoge
-    end
 
+
+    ActiveRecord::Base.transaction do
+      @reserve.save!
+      ArrivalLog.create!( user_id: @current_user.id,
+                          shop_id: @reserve.shop.id,
+                          arrival_time: Time.now )
+    end
+    redirect_to [:customer,  @reserve]
+    # todo error hundling
   end
 
   def cancel

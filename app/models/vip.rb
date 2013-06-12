@@ -1,8 +1,7 @@
 #coding: utf-8
 class Vip < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :shop
-  attr_accessible :property, :user_id, :shop_id
+  include VipAssosiation
+  attr_accessible :property
 
   class << self
     def search( condition, in_rel )
@@ -16,9 +15,7 @@ class Vip < ActiveRecord::Base
       end
 
       out_rel
-
-
-
     end
   end
 end
+
