@@ -1,3 +1,5 @@
+# coding: utf-8
+
 Aitel::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -34,4 +36,15 @@ Aitel::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.after_initialize do
+    Bullet.enable = true # Bulletプラグインを有効
+    Bullet.alert = true # JavaScriptでの通知
+    #Bullet.bullet_logger = true # log/bullet.logへの出力
+    Bullet.console = true # ブラウザのコンソールログに記録
+    Bullet.rails_logger = true # Railsログに出力
+    #Bullet.disable_browser_cache = true #ブラウザキャッシュの無効化
+  end
+
 end
+
