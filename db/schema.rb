@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611050730) do
+ActiveRecord::Schema.define(:version => 20130612043119) do
 
   create_table "answers", :force => true do |t|
     t.integer  "want_id"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(:version => 20130611050730) do
 
   add_index "answers", ["shop_id"], :name => "index_answers_on_shop_id"
   add_index "answers", ["want_id"], :name => "index_answers_on_want_id"
+
+  create_table "arrival_logs", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "shop_id"
+    t.datetime "arrival_time"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "arrival_logs", ["shop_id"], :name => "index_arrival_logs_on_shop_id"
+  add_index "arrival_logs", ["user_id"], :name => "index_arrival_logs_on_user_id"
 
   create_table "messages", :force => true do |t|
     t.integer  "user_id"
