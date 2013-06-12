@@ -1,0 +1,5 @@
+
+<%= form_for @arrival_log do |f| %>
+  <%= f.datetime_select %>
+  <%= f.hidden_field :user_id, value: :user_id %>
+<% end %>

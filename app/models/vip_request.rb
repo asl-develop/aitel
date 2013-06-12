@@ -1,7 +1,6 @@
 class VipRequest < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :shop
-  attr_accessible :status, :user_id
+  include VipAssosiation
+  attr_accessible :status
 
   scope :by, ->(shop){ where( shop_id: shop.id) }
   scope :requesting, ->{ where( status: STATUS_INVITING) }

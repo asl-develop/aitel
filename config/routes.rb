@@ -19,6 +19,10 @@ Aitel::Application.routes.draw do
 
   resources :vips do
   end
+
+  resources :arrival_logs, only: [:new, :create] do
+  end
+
   resources :messages do
   end
 
@@ -34,6 +38,7 @@ Aitel::Application.routes.draw do
   resources :answers, only: [:index] do
     member {put "consent", "reject"} # 了解, 拒否
   end
+
 
 
   # お客側

@@ -7,11 +7,14 @@
   <%= f.submit '検索' %>
 <% end %>
 
+
 <table>
   <tr>
     <th>Name</th>
     <th>Email</th>
     <th>特徴</th>
+    <th></th>
+    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -21,6 +24,10 @@
     <td><%= vip.user.name %></td>
     <td><%= vip.user.email %></td>
     <td><%= vip.property %></td>
+    <td>
+      <a href="#myModal<%=vip.id%>" role="button" class="btn" data-toggle="modal">来店履歴の登録</a>
+      <%= render 'arrival_input_form', { vip: vip, arrival_log: @new_arrival_log} %>
+    </td>
     <td><%= link_to 'Show', vip %></td>
     <td><%= link_to 'Destroy', vip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
