@@ -22,7 +22,7 @@ group :test, :development do
   gem 'growl' if /darwin/ =~ RUBY_PLATFORM
   gem 'libnotify' if /linux/ =~ RUBY_PLATFORM
   gem 'rb-inotify' if /linux/ =~ RUBY_PLATFORM
-
+  gem "bullet"
 end
 
 # Gems used only for assets and not required

@@ -1,4 +1,7 @@
 class ShopsController < ShopBase
+
+  skip_before_filter :login_required, only:[:new,:create]
+
   # GET /shops
   # GET /shops.json
   def index
@@ -44,6 +47,7 @@ class ShopsController < ShopBase
 
     respond_to do |format|
       if @shop.save
+        session[:shop_id] = @shop.id
         format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
         format.json { render json: @shop, status: :created, location: @shop }
       else

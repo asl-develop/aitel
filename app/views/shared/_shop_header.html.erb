@@ -26,9 +26,9 @@
           </ul>
         </li>
       </ul>
-      <p class="navbar-text pull-right">
+      <p class="navbar-text pull-right login-state">
       <% if @current_shop %>
-        <%= @current_shop.name %>でログイン中 | 
+        <%= link_to @current_shop.name, shop_path(@current_shop) %>でログイン中 | 
         <%= link_to 'ログアウト', :session ,method: :delete %>
       <% end %>
       </p>
