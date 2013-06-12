@@ -2,12 +2,16 @@
 
 Aitel::Application.routes.draw do
 
-
-  get "reserves/create"
-
-  root :to => 'shops#index'
+  root :to => 'vips#index'
 
   resources :users do
+  end
+
+  resources :reserves, only: [:index] do
+    member do
+      put 'accept'
+      put 'reject'
+    end
   end
 
   resources :shops do

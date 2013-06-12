@@ -3,7 +3,6 @@
 <head>
   <title>Aitel</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -11,5 +10,6 @@
 <%= render 'shared/customer_header' %>
 <%= yield %>
 
+<%= javascript_include_tag "application" %>
 </body>
 </html>

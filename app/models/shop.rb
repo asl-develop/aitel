@@ -5,6 +5,7 @@ class Shop < ActiveRecord::Base
   has_many :messages
   has_many :vip_requests
   has_many :answers
+  has_many :reserves
   attr_accessible :email, :login_id, :name, :password_digest
 
 
