@@ -1,7 +1,7 @@
 class Customer::WantsController < Customer::CustomerBase
   def new
     @want = Want.new
-    @vips = @current_user.vips
+    @vips = @current_user.vips.includes(:shop)
   end
 
   def create
@@ -18,7 +18,7 @@ class Customer::WantsController < Customer::CustomerBase
       @want.save!
     end
     
-    redirect_to new_customer_want_path
+    redirect_to [:customer, :answers ]
     
     rescue => e
       puts e

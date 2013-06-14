@@ -9,7 +9,20 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= bootstrap_customize
- *= require_tree .
  */
 
+@import 'app_valiables';
+@import 'bootstrap';
+@import 'bootstrap-responsive';
+@import 'bootstrap_customize';
+
+@import './public/common';
+
+//want
+.date-selector{
+    width: 70px;
+}
+
+h2.current-title{
+   @include zurui-ts-000;
+}

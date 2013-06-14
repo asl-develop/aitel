@@ -1,13 +1,32 @@
-<% if @current_user %>
-  <%= @current_user.name %>でログイン中 | <%= link_to 'ログアウト', [:customer, :session] ,method: :delete %>
-<% end %>
-<br>
-<%= link_to 'お気に入りのお店', [:customer, :shops] %> / 
-<%= link_to 'MESSAGE', [:customer, :messages] %> / 
-<%= link_to 'VIP REQUEST!', [:customer, :vip_requests] %> /
-<%= link_to '募集の状況', [:customer, :answers] %> /
-<%= link_to '募集する',  new_customer_want_path  %> / 
-<% if @current_user.present? %>
-  <%= link_to 'アカウント',  customer_user_path(@current_user)  %>
-<% end %>
+<div class="navbar-inner">
+  <div class="container">
+    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <%= link_to 'V.I.P. LINE' , [:customer, :root], class: 'brand' %>
+    <div class="nav-collapse collapse">
+      <ul class="nav">
+        <li class="active"><%= link_to 'HOME', [:customer, :root ] %></li>
+        <li><%= link_to 'クイック予約', customer_want_select_path %></li>
+        <li><%= link_to 'メッセージ', [:customer, :messages] %></li>
+        <li><%= link_to 'VIP REQUEST', [:customer, :vip_requests] %></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">その他 <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'お気に入りのお店', [:customer, :shops] %></li>
+            <li class="divider"></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="navbar-text pull-right login-state">
+      <% if @current_user %>
+        <%= link_to @current_user.name, customer_user_path(@current_user) %>でログイン中 | 
+        <%= link_to 'ログアウト', [:customer, :session] ,method: :delete %>
+      <% end %>
+      </p>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
 

@@ -1,15 +1,16 @@
-<h1>Wants#new</h1>
-<p>Find me in app/views/wants/new.html.erb</p>
-
-
+<h2>STEP1: 行きつけのお店に問い合わせ </h2>
 
   <%= form_for [:customer, @want] do |f| %>
-    <%= f.text_field :amount %><br>
-    <%= f.datetime_select :from_date %><br>
-    <%= f.hidden_field :locked, value: 0 %><br>
-    <%= f.label :answer_id, '募集先' %><br>
+    <%= f.label :amount, '人数' %>
+    <%= f.select :amount, number_selector_options(1,30) %>
+    <%= f.label :from_date, '日時' %>
+    <%= datetime_select_ex( :want, :from_date)  %>
+    <%= f.hidden_field :locked, value: 0 %>
+    <%= f.label :answer_id, '募集先' %>
     <% @vips.each do |vip| %>
+      <label class="checkbox">
       <%= check_box_tag("answer_ids[]", vip.shop.id  ) %><%= vip.shop.name %><br/>
+      </label>
     <% end %><br>
     <%= f.submit '募集!', confirm: "募集しますか？", class: 'btn' %><br>
   <% end %>
