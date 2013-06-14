@@ -11,6 +11,7 @@ class Customer::ReservesController < Customer::CustomerBase
 
     ActiveRecord::Base.transaction do
       @reserve.save!
+      Want.lock_all_own_by( @current_user )
       answer = Answer.find( params[:ans_id][:value] )
       answer.selected = Answer::SELECTED
       answer.save!

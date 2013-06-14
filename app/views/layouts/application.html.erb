@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Aitel</title>
+    <title>VipLine::shop side</title>
     <%= csrf_meta_tags %>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +11,12 @@
     <!-- Le styles -->
     <style type="text/css">
       body {
-        padding-top: 60px;
+        padding-top: 40px;
         padding-bottom: 40px;
       }
     </style>
 
-    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= stylesheet_link_tag    "shop_side_base", :media => "all" %>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="../assets/js/html5shiv.js"></script>
@@ -35,6 +35,17 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <%= render 'shared/shop_header' %>
     </div>
+    <div class="contents-header-row">
+      <div class="container">
+        <div class="row-fluid" >
+          <div class="contents-header">
+            <h2 class="current-title">Current Title</h2>
+          </div>
+        </div>
+      </div>
+      <div class="contents-header-footer">　</div>
+    </div>
+    <div class="container">
 
     <div class="container">
 

@@ -10,7 +10,6 @@
       <ul class="nav">
         <li class="active"><%= link_to 'V.I.P', :vips %></li>
         <li><%= link_to 'NEW MESSAGE', new_message_path %></li>
-        <li><%= link_to 'VIP REQUEST!', new_vip_request_path %></li>
         <li><%= link_to 'ANSERS', :answers %></li>
         <li><%= link_to 'RESERVES', :reserves %></li>
         <li class="dropdown">
@@ -21,8 +20,7 @@
             <li><a href="#">Something else here</a></li>
             <li class="divider"></li>
             <li class="nav-header">Nav header</li>
-            <li><a href="#">Separated link</a></li>
-            <li><a href="#">One more separated link</a></li>
+            <li><%= link_to 'VIP REQUEST!', new_vip_request_path %></li>
           </ul>
         </li>
       </ul>

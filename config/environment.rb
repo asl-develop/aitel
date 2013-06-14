@@ -7,3 +7,4 @@ end
 
 # Initialize the rails application
 Aitel::Application.initialize!
+Dir.glob(File.join("lib", "extend", "*")).each {|x| require ("./" + x) }

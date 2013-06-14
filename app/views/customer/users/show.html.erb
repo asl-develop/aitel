@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <b>Name:</b>
@@ -10,11 +9,68 @@
   <%= @user.email %>
 </p>
 
-<p>
-  <b>Password digest:</b>
-  <%= @user.password_digest %>
-</p>
+
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs ">
+    <li class="active"><a href="#tab1" data-toggle="tab">行きつけ</a></li>
+    <li><a href="#tab2" data-toggle="tab">食事の履歴</a></li>
+    <li><a href="#tab3" data-toggle="tab">メッセージ</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <% @user.shops.each do |shop|  %>
 
 
-<%= link_to 'Edit', edit_customer_user_path(@user) %> |
-<%= link_to 'Back', customer_users_path %>
+      <div class="fav-restaurant" id="fav-restaurant" >
+        <div class="row-fluid">
+          <div class="img-unit span3">
+            <%= image_tag 'dessert-02.jpg', class: 'img' %>
+          </div>
+          <div class="restaurant-left span9">
+            <div>
+              <span class="listing-title"><%= shop.name %></span>
+            </div>
+            <div class="status">
+              <i class="icon-star-empty"></i>23
+              <i class="icon-user"></i>31
+              <i class="icon-comment"></i>31
+            </div>
+            <div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="fotter row-fluid">
+            <div class="status-mini">
+              <span class="status-element"><i class="icon-star-empty"></i>23</span>
+              <span class="status-element"><i class="icon-user"></i>23</span>
+              <span class="status-element status-element-last"><i class="icon-comment"></i>23</span>
+            </div>
+        </div>
+      </div>
+
+
+      <% end %>
+
+    </div>
+    <div class="tab-pane" id="tab2">
+      <% @arrival_logs.each do |log|  %>
+        <div>
+          <%= mmddhhmm_ja( log.arrival_time ) %>
+          <%= log.shop.name %>
+        </div>
+      <% end %>
+    </div>
+    <div class="tab-pane" id="tab3">
+      <% @user.messages.each do |message|  %>
+        <div class="well">
+          <%= mmddhhmm_ja( message.created_at ) %>
+          <h5><%= message.title  %></h5>
+          <%= simple_format( message.content ) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+ <hr>
+

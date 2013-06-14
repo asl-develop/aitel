@@ -3,6 +3,7 @@ class Customer::SessionsController < Customer::CustomerBase
 
 
   def new
+    redirect_to [:customer , @current_user] if logged_in?
   end
 
   def create
