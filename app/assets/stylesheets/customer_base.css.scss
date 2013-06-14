@@ -22,19 +22,46 @@
     width: 70px;
 }
 
+
+$favorite_tab_bg: #ffffff;
+#home-tab{
+  .nav-tabs{
+    border-color: $gray;
+    margin-bottom: 0px;
+    .active{
+      a{
+        border-color: $gray;
+        border-bottom-color: transparent;
+        background-color: $favorite_tab_bg;
+      }
+    }
+  }
+  .tab-content{
+    border-color: $gray;
+    border-style: solid;
+    border-width: 1px;
+    border-top-width: 0px;
+    background-color: $favorite_tab_bg;
+    padding: 20px 15px;
+  }
+}
+
 .fav-restaurant{
   @extend .well;
   @include border-radius(0px);
-  padding: 5px 10px; 
+  padding: 10px 10px; 
+  border-color: $grayLight;
 
   .img-unit{
     padding-right: 10px;
   }
   .status-mini{
+    float: left;
     display: none;
     color: $gray;
   }
   .status{
+    color: $gray;
     display: block;
   }
 
