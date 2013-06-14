@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :shops , through: :vips
   has_many :messages
   has_many :wants
+  has_many :reserves
+  has_many :arrival_logs
   attr_accessible :email, :name, :password_digest
 
 

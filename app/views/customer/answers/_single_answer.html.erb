@@ -1,13 +1,27 @@
-<%= answer.id %> | <%= answer.shop.name%> | <%= answer.display_status %> | <%= answer.selected %>
+<h5><%= answer.shop.name%></h5>
+<%= answer.display_status %> 
 <% if answer.ok? %>
-  <br><a href="#" id="reserve-sw" name="<%= "reserve-#{answer.id}"%>" >【予約する】</a>
+  <a href="#myModal<%=answer.id%>" role="button" class="btn" data-toggle="modal">予約する</a>
 <% end %><br>
-<div id="<%= "reserve-#{answer.id}" %>" class="action-unit">
+
+
+<div id="myModal<%=answer.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <%= form_for [:customer, @reserve] do |f| %>
-  <%= f.hidden_field :shop_id, value: answer.shop_id %>
-  <%= f.hidden_field :status, value: 0 %>
-  <%= hidden_field :ans_id, :value, value: answer.id %>
-  <%= f.datetime_select :expected_time ,{}, {class: 'span2'}%><br>
-  <%= f.submit '予約する', class: 'btn' %>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel"><%= answer.shop.name %></h3>
+  </div>
+  <div class="modal-body">
+    <%= f.hidden_field :shop_id, value: answer.shop_id %>
+    <%= f.hidden_field :status, value: 0 %>
+    <%= hidden_field :ans_id, :value, value: answer.id %>
+    <%= f.label :expected_time, '到着予定' %>
+    <%= datetime_select_ex :reserve, :expected_time %><br>
+    
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <%= f.submit '予約する', class: 'btn btn-primary' %>
+  </div>
 <% end %>
 </div>

@@ -36,10 +36,10 @@ group :assets do
 
   gem 'bootstrap-sass', '~> 2.3.1.0'
   gem 'compass-rails'
-
+  gem 'zurui-sass-rails'
   gem 'uglifier', '>= 1.0.3'
 end
-
+gem 'font-awesome-rails'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

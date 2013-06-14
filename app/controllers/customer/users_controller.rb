@@ -19,6 +19,7 @@ class Customer::UsersController < Customer::CustomerBase
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @arrival_logs = @user.arrival_logs.includes(:shop)
 
     respond_to do |format|
       format.html # show.html.erb

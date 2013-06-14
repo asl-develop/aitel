@@ -1,0 +1,84 @@
+@import 'compass/utilities';
+@import 'compass/css3';
+@import 'zurui-sass';
+@import 'font-awesome';
+
+body{
+  font-size: 12px;
+}
+
+.contents-header-row{
+  @extend container-fluid;
+  background-image: url('dark-canvas.gif');
+  margin : 0px 0px;
+  padding : 0px 0px;
+  
+}
+.contents-header{
+  color: $white;
+  padding : 20px 5px;
+  
+}
+.contents-header-footer{
+  @extend .row-fluid;
+  color: $black;
+  background-color: $black;
+  padding: 0px 0px;
+  margin: 0px 0px;
+}
+
+.main-contents{
+  padding: 10px;
+  min-width: 320px;
+}
+
+.hide{
+  display: none;
+}
+
+.listing-title{
+  font-weight: bold;
+}
+
+
+
+
+
+@media screen and (min-width: 500px) {
+
+}
+
+
+
+@media screen and (max-width: 500px) {
+  body{ 
+  }
+
+  .layout-div{
+    float: left;
+  }
+
+  .contents-header-row{
+    display: none;
+  }
+
+  #fav-restaurant {
+    .img-unit {
+      @extend .layout-div;
+      width: 30%;
+      box-sizing: border-box;
+    }
+    .restaurant-left{
+      @extend .layout-div;
+      width: 70%;
+    }
+    .status-mini{
+      display: block;
+    }
+    .status{
+      display: none;
+    }
+  }
+
+  
+}

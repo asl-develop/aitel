@@ -4,11 +4,11 @@ class Want < ActiveRecord::Base
   attr_accessible :answer_ids, :amount, :from_date, :locked
 
   scope :of, ->(user){ where( user_id: user.id ) }
-  scope :available, ->(user){ where( locked: 0 ) }
+  scope :available, ->{ where( locked: 0 ) }
 
   class << self
     def lock_all_own_by(user)
-      Want.where(user_id: user.id).update_all(locked: 1)
+      Want.where(user_id: user.id).available.update_all(locked: 1)
     end
   end
 

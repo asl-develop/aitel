@@ -44,7 +44,9 @@ Aitel::Application.routes.draw do
   # お客側
   namespace :customer do
 
-    root :to => 'users#index'
+    root :to => 'sessions#new'
+
+    get 'want_select' => 'top#want_select'
 
     resources :sessions, only: [:new] do
     end

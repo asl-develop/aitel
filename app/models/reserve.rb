@@ -2,6 +2,10 @@ class Reserve < ActiveRecord::Base
   include VipAssosiation
   attr_accessible :expected_time, :status
 
+  scope :in_action, ->{
+    where( status: [ STATUS_ASKING, STATUS_RESERVED ] )
+  }
+
   STATUS_ASKING = 0
   STATUS_RESERVED = 1
   STATUS_CHECKED_IN = 2

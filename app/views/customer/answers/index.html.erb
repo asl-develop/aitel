@@ -1,8 +1,26 @@
-INDEX!<br>
+<h2>STEP2:本命を選んで予約する</h2>
+<br>
 <div id="answers-list">
-<% @answers.each do |ans| %>
-  <div class="well">
-    <%= render 'single_answer', answer: ans %>
+
+
+<% if @want %>
+  <%= link_to_function '募集条件の確認▼', "App.util.toggle('want-status')", class: 'btn' %>
+  <div id="want-status" class="well well-small" >
+    日時：<%= mmddhhmm( @want.from_date ) %><br>
+    人数：<%= @want.amount %><br>
+    <%= link_to '→新しい条件で募集する', new_customer_want_path %>
+  </div>
+  <br>
+  <br>
+  <% @answers.each do |ans| %>
+    <div class="well well-small">
+      <%= render 'single_answer', answer: ans %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="alert">
+    <b>募集してない</b>
   </div>
 <% end %>
+
 </div>
