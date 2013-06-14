@@ -10,6 +10,7 @@ gem 'active_decorator'
 
 group :production do
   gem 'pg'
+
 end
 
 group :test, :development do
