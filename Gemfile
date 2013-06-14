@@ -8,6 +8,11 @@ gem 'rails', '3.2.13'
 gem 'factory_girl_rails'
 gem 'active_decorator'
 
+group :production do
+  gem 'pg'
+
+end
+
 group :test, :development do
   gem 'sqlite3'
   gem "rails-erd"
