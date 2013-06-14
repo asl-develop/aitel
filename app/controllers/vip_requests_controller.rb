@@ -31,7 +31,7 @@ class VipRequestsController < ShopBase
 
   def targets_for
 
-    @users = User.not_invited_by( @current_shop )
+    @users = User.not_invited_by( @current_shop ).not_vip( @current_shop )
     @users = User.search( @search_condition, @users)
     
     html = render_to_string partial: 'targets', locals: { users: @users }

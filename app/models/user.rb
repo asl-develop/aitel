@@ -19,6 +19,14 @@ class User < ActiveRecord::Base
           vip_requests[:user_id].eq( users[:id])).exists.not)
       }
 
+  scope :not_vip,
+    ->(shop){
+      vips = Vip.arel_table
+      where(
+        Vip.by_shop( shop ).where(
+          vips[:user_id].eq( users[:id])).exists.not)
+      }
+
   class << self
 
     def authenticate(email, password)

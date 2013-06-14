@@ -3,6 +3,8 @@ class Vip < ActiveRecord::Base
   include VipAssosiation
   attr_accessible :property
 
+  scope :by_shop, ->(shop){ where( shop_id: shop.id) }
+
   class << self
     def search( condition, in_rel )
       return in_rel if condition.brank?
