@@ -22,12 +22,14 @@ class Customer::ReservesController < Customer::CustomerBase
   def check_in
     @reserve = Reserve.find( params[:id]).to_checked_in_state!
 
-
     ActiveRecord::Base.transaction do
       @reserve.save!
-      ArrivalLog.create!( user_id: @current_user.id,
-                          shop_id: @reserve.shop.id,
-                          arrival_time: Time.now )
+      @arrival_log = ArrivalLog.new( user_id: @current_user.id,
+                            shop_id: @reserve.shop.id,
+                            arrival_time: Time.now )
+        
+      @arrival_log.save! unless @arrival_log.arrival_log_exists?
+                            
     end
     redirect_to [:customer,  @reserve]
     # todo error hundling
