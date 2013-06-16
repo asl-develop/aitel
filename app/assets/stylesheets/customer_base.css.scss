@@ -47,37 +47,22 @@ $favorite_tab_bg: #ffffff;
 }
 
 .fav-restaurant{
-  @extend .well;
-  @include border-radius(0px);
-  padding: 10px 10px; 
-  border-color: $grayLight;
 
-  .img-unit{
-    padding-right: 10px;
-  }
   .status-mini{
     float: left;
     display: none;
     color: $gray;
   }
+
   .status{
     color: $gray;
     display: block;
   }
 
   .img{
-    @include border-radius(4px);
-    border-width: 1px;
-    border-style: solid;
-    border-color: $grayLight;
-    width: 100%;
     max-width: 150px;
   }
 
-  .fotter{
-    margin-top: 5px;
-    @include zurui-line-top;
-  }
 
   .status-element{
     color: $gray;
@@ -85,12 +70,40 @@ $favorite_tab_bg: #ffffff;
     @include zurui-line-right;
     padding-right: 10px;
     margin-right: 10px;
-
   }
   
   .status-element-last{
     border-width: 0px;
   }
+  
+  .answer-box{
+    @extend .box-base;
+    text-align: center;
+    span { color: $gray; }
+    a { color: $black; }
+  }
+  .answer{
+    font-size: 16px;
+  }
 
 }
 
+@media screen and (max-width: 767px) {
+
+  #fav-restaurant {
+    .img-unit {
+      @extend .layout-div;
+      width: 30%;
+    }
+    .restaurant-left{
+      @extend .layout-div;
+      width: 70%;
+    }
+    .status-mini{
+      display: block;
+    }
+    .status{
+      display: none;
+    }
+  }
+}
