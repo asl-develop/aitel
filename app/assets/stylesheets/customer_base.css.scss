@@ -90,6 +90,14 @@ $favorite_tab_bg: #ffffff;
 
 @media screen and (max-width: 767px) {
 
+  #vis-listing{
+    .img-unit {
+      @extend .layout-div;
+      width: 30%;
+    }
+  }
+
+
   #fav-restaurant {
     .img-unit {
       @extend .layout-div;

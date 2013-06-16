@@ -1,9 +1,9 @@
 
-<h1>NEW VIP_REQUESTS</h1>
+<h3>お客様をVIPとして招待</h3>
 
-<%= form_for :search_condition, url: targets_for_vip_requests_path ,
+<%= form_for :search_condition,  url: targets_for_vip_requests_path ,
   html: {method: :get, :'data-type' => 'json',
-         remote: true, id: 'user-search-form' } do  |f| %>
+         remote: true, id: 'user-search-form', class: 'well'  } do  |f| %>
   名前：<%= f.text_field :name %><br/>
   email：<%= f.text_field :email %><br/>
   <%= f.submit '検索' %>

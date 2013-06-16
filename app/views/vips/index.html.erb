@@ -1,41 +1,58 @@
-<h1>Listing Vips</h1>
+<h2>VIP List</h2>
 
-<div class="well well-small">
-  <h4>絞り込み</h4>
+
+<%= link_to_function '条件で絞り込む▼', "window.App.util.toggle( 'vip-search-form' )", class: 'btn btn-ex' %>
+<div class="well well-small hide" id="vip-search-form">
+  <h4>絞り込み条件の設定</h4>
   <%= form_for :search_condition, url: vips_path ,
     html: {method: :get,  id: 'search-form' } do  |f| %>
     名前：<%= f.text_field :name %><br/>
     特徴：<%= f.text_field :property %><br/>
-    <%= f.submit '検索', class: 'btn' %>
+    <%= f.submit '絞り込む', class: 'btn btn-block' %>
   <% end %>
 </div>
 
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>特徴</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<br>
+<br>
 
 <% @vips.each do |vip| %>
-  <tr>
-    <td><%= vip.user.name %></td>
-    <td><%= vip.user.email %></td>
-    <td><%= vip.property %></td>
-    <td>
-      <a href="#myModal<%=vip.id%>" role="button" class="btn" data-toggle="modal">来店履歴の登録</a>
-      <%= render 'arrival_input_form', { vip: vip, arrival_log: @new_arrival_log} %>
-    </td>
-    <td><%= link_to '詳細', vip, class: 'btn' %></td>
-  </tr>
+  <div class="listing-item-box vip-listing" id="vip-listing">
+    <%= link_to vip do  %>
+    <div class="row-fluid">
+
+      <div class="img-unit span3">
+        <%= image_tag 'man_black.png', class: 'img' %>
+      </div>
+      <div class="vip-listing-left span9">
+        <div>
+          <span class="listing-title"><%= vip.user.name %></span> 様 :: XXXX 様の紹介グループ
+        </div>
+        <span>常連Level : <span class="red">超VIP</span></span><br>
+        <div>
+          直近来店日：1月15日
+        </div>
+        <div class="status-mini">
+          <span class="status-element"><i class="icon-star-empty"></i>VIPポイント:23</span> | 
+          <span class="status-element"><i class="icon-user"></i>来店回数:15</span>
+        </div>
+        <div>
+          <b>特徴：</b><br>
+          <span class="property-content"><%= vip.property %></span>
+        </div>
+
+      </div>
+    </div>
+    <% end %>
+    <%= render 'arrival_input_form', { vip: vip, arrival_log: @new_arrival_log} %>
+    <div class="fotter row-fluid">
+      <div class="action-row">
+        <a href="#" class="btn btn-ex btn-block">メッセージの送信</a>
+        <a href="#myModal<%=vip.id%>" role="button" class="btn btn-ex btn-block" data-toggle="modal">来店履歴の登録</a>
+      </div>
+    </div><!-- Fotter end -->
+
+  </div>
 <% end %>
-</table>
 
-<br />
 
-<%= link_to 'New Vip', new_vip_path %>
+

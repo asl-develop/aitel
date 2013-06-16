@@ -1,27 +1,58 @@
-<div id="search-box">
-NEW MESSAGE
-<%= form_for :search_condition, url: vips_path ,
-  html: {method: :get, :'data-type' => 'json', remote: true, id: 'search-form' } do  |f| %>
-  名前：<%= f.text_field :name %><br/>
-  特徴：<%= f.text_field :property %><br/>
-  <%= f.submit '検索' %>
-<% end %>
-</div>
+<h3>新規メッセージ</h3>
 
 <% if @vips.present? %>
+  <%= link_to_function '定型文より選択▼', "window.App.util.toggle( 'format-selector' )", class: 'btn btn-ex' %>
+  <div id="format-selector" class="hide">
+    <p>ー＞選択すると、作成した定型文の内容がタイトルと本文にセットされます。</p>
+    <form class="well well-small">
+      <label class="radio">
+        <input  name="template" type="radio">ごあいさつ
+      </label>
+      <label class="radio">
+        <input name="template" type="radio">良い食材/お酒の入荷を知らせる
+      </label>
+      <label class="radio">
+        <input name="template" type="radio">イベントのお知らせ
+      </label>
+    </form>
+  </div>
+  <h5>宛先</h5>
+  <%= link_to_function '条件で絞り込む▼', "window.App.util.toggle( 'vip-search-form' )", class: 'btn btn-ex' %>
+  <div class="well well-small hide" id="vip-search-form">
+    <p>ー＞お客様の情報、来店時のメモの内容で絞り込み検索を行います。</p>
+    <p>ー＞★現状で絞り込みを行うと、レイアウトが崩れてしまいます。</p>
+    <%= form_for :search_condition, url: vips_path ,
+      html: {method: :get, :'data-type' => 'json', remote: true, id: 'search-form' } do  |f| %>
+      名前：<%= f.text_field :name %><br/>
+      特徴：<%= f.text_field :property %><br/>
+      <%= f.submit '絞り込む', class: 'btn btn-ex' %>
+    <% end %>
+  </div>
   <%= form_for @message do |f| %>
-    
-    <h5>宛先</h5>
+    <a href="#">＞全選択</a>
+    <a href="#">＞全解除</a>
     <div id="to_users">
       <% @vips.each do |vip| %>
-        <%= check_box_tag("to_users[]", vip.user.id  ) %><%= vip.user.name %><br/>
+        <div class="box-base">
+        <label class="checkbox">
+          <%= image_tag 'man_black.png' , class: 'to-user-image' %>
+          <%= check_box_tag("to_users[]", vip.user.id  ) %>
+          <%= vip.user.name %> | 
+          <i class="icon-star-empty"></i>15 | 
+          <i class="icon-user"></i>23  | 
+          <a href="#" class="btn btn-small btn-ex">　詳細　</a>
+        </label>
+        </div>
       <% end %>
     </div>
-    <h5>メッセージ</h5>
 
-    <%= f.text_field :title %><br />
-    <%= f.text_area :content %><br />
-    <%= f.submit %>
+    <h5>タイトル</h5>
+    <%= f.text_field :title , placeholder: "メッセージタイトルを入力" %><br />
+
+    <h5>本文</h5>
+    <%= f.text_area :content, size: '10x5' , placeholder: "メッセージ本文を入力" %><br />
+
+    <%= f.submit '送信する', class: 'btn btn-ex',confirm: '送信しますか?' %>
 
   <% end %>
 <% end %>
