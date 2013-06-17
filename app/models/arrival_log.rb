@@ -1,3 +1,4 @@
+# coding: utf-8
 class ArrivalLog < ActiveRecord::Base
   include VipAssosiation
   attr_accessible :arrival_time 
@@ -5,7 +6,8 @@ class ArrivalLog < ActiveRecord::Base
   
   
   def arrival_log_exists?
-    get_arrival_log > 0 ? true : false
+    # todo 一旦なし
+    # get_arrival_log > 0 
   end
 
   private
@@ -17,7 +19,7 @@ class ArrivalLog < ActiveRecord::Base
       rel = ArrivalLog.where( '1 = 1' )
       rel = rel.where( arrival_logs[:arrival_time].gteq(start_time))
       rel = rel.where( arrival_logs[:arrival_time].lteq(end_time))
-      rel = rel.where(shop_id: shop.id, user_id: user.id)
+      rel = rel.where(shop_id: self.shop_id, user_id: self.user_id)
       rel.count
     end
   
