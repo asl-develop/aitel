@@ -47,6 +47,20 @@ h2.current-title{
 
 @media screen and (max-width: 767px) {
 
+  #reserve-list{
+    .img-unit {
+      @extend .layout-div;
+      width: 15%;
+    }
+    .vip-listing-left{
+      @extend .layout-div;
+      width: 85%;
+    }
+    .img{
+      max-width: 150px;
+    }
+  }
+
   #vip-listing{
     .img-unit {
       @extend .layout-div;

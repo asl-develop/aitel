@@ -1,3 +1,11 @@
-<% @reserves.each do |reserve| %>
-  <%= render 'single_reserve', reserve: reserve %>
+<h3>予約一覧</h3>
+<% unless @reserves.present? %>
+  <div class="alert">予約の履歴はありません。</div>
+<% else %>
+  <input type="button" value="状態で絞り込み▼" class="btn btn-ex">
+  <br>
+  <br>
+  <% @reserves.each do |reserve| %>
+    <%= render 'single_reserve', reserve: reserve %>
+  <% end %>
 <% end %>

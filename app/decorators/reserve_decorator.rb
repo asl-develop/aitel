@@ -13,12 +13,8 @@ module ReserveDecorator
 
   def check_in_link
 
-    if Time.now >= expected_time
-      link_to 'チェックイン', check_in_customer_reserve_path( self ),
-        method: :put, class: 'btn', confirm: 'チェックインしますか？'
-    else
-      link_to 'チェックイン', '#', class: 'btn', disabled: true
-    end
+    link_to 'チェックイン', check_in_customer_reserve_path( self ),
+      method: :put, class: 'btn', confirm: 'チェックインしますか？'
   end
 
   def customers_action_link
@@ -45,10 +41,10 @@ module ReserveDecorator
 
     accept_link = 
       link_to '予約確定', accept_reserve_path( self ),
-        method: :put, class: 'btn'
+        method: :put, class: 'btn btn-ex btn-block'
     reject_link = 
       link_to '満席のため予約不可', reject_reserve_path( self ),
-        method: :put, class: 'btn'
+        method: :put, class: 'btn btn-ex btn-block'
 
     if status == Reserve::STATUS_ASKING
       accept_link + reject_link

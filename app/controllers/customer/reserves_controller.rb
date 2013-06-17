@@ -1,5 +1,10 @@
 class Customer::ReservesController < Customer::CustomerBase
 
+  def current
+    @reserve = @current_user.reserves.order(:created_at).reverse_order.first
+    render :show
+  end
+
   def show 
     @reserve = Reserve.includes(:shop).find(params[:id])
   end
