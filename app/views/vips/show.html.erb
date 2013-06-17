@@ -14,6 +14,17 @@
   <%= @vip.property %>
 </p>
 
+<b>来店履歴:</b>
+<div class="box-base">
+  <ul>
+    <li>2013/1/13 12:30～ : サッカーが好きだと言っていた</li>
+    <li>2013/3/14 18:30～ : 日本酒をよく頼んでいた</li>
+    <li>2013/5/03 18:30～</li>
+  </ul>
+</div>
+<b>紹介ネットワーク:</b><br>
+<%= image_tag 'tree.png' ,class: 'tree-img' %>
+<br>
 
-<%= link_to 'Edit', edit_vip_path(@vip) %> |
-<%= link_to 'Back', vips_path %>
+
+<%= link_to '情報の編集', edit_vip_path(@vip) %> |
