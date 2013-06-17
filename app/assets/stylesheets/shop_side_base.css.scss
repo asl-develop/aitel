@@ -26,3 +26,40 @@
 h2.current-title{
    @include zurui-ts-000;
 }
+
+.vip-listing{
+    .img{
+      max-width: 150px;
+    }
+    .property-content {
+      padding-left: 15px;
+    }
+
+}
+
+#vip-listing{
+    .answer-vip-image{
+      max-width: 100px;
+    }
+}
+
+
+
+@media screen and (max-width: 767px) {
+
+  #vip-listing{
+    .img-unit {
+      @extend .layout-div;
+      width: 30%;
+    }
+    .vip-listing-left{
+      @extend .layout-div;
+      width: 70%;
+    }
+    .img{
+      max-width: 150px;
+    }
+  }
+}
+
+

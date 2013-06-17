@@ -3,14 +3,15 @@
 <%= form_for arrival_log do |f| %>
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel"><%= vip.user.name %></h3>
+    <h3 id="myModalLabel"><%= vip.user.name %> 様の来店履歴を登録</h3>
   </div>
   <div class="modal-body">
 
   <%= f.hidden_field :user_id, value: vip.user_id %>
   <%= f.hidden_field :shop_id, value: vip.shop_id %>
-  <%= f.datetime_select :arrival_time %>
-    
+  <%= datetime_select_ex :arrival_log, :arrival_time %>
+  <br><b>メモ</b><br>
+  <%= text_area_tag :memo ,'', size: '10x5',placeholder: '来店時に特筆すべき事柄がある場合に記入します。ここで入力した項目は、VIPの絞り込み検索の対象となります。' %>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
