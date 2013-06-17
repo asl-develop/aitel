@@ -1,5 +1,4 @@
-<h1>Editing V.I.P.</h1>
-
+<h3>VIP 情報の編集</h3>
 <% if @vip.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@vip.errors.count, "error") %> prohibited this vip from being saved:</h2>
@@ -22,7 +21,7 @@
 
 <%= form_for(@vip) do |f| %>
   <div class="field">
-    <%= f.label :property %><br />
+    <%= f.label :property , '特徴' %><br />
     <%= f.text_area :property %>
   </div>
   <div class="actions">

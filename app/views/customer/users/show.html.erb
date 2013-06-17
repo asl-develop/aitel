@@ -40,6 +40,7 @@
         <div class="well">
           <%= mmddhhmm_ja( message.created_at ) %>
           <h5><%= message.title  %></h5>
+          お店: <%= message.shop.name %>
           <%= simple_format( message.content ) %>
         </div>
       <% end %>
