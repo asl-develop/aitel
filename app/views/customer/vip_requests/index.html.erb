@@ -1,23 +1,46 @@
-<h1>NEW VIP_REQUESTS</h1>
-
-
-<table>
-  <tr>
-    <th>日時</th>
-    <th>お店</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @vip_requests.each do |vip_request| %>
-  <tr>
-    <td><%= vip_request.created_at %></td>
-    <td><%= vip_request.shop.name %></td>
-    <td><%= link_to '承認', approve_customer_vip_request_path(vip_request), method: :put, confirm: "承認しますか？" %></td>
-    <td><%= link_to '拒否', reject_customer_vip_request_path(vip_request), method: :put, confirm: "拒否しますか？" %></td>
-  </tr>
+<h3>招待状</h3>
+<% unless @vip_requests.present? %>
+  <div class="alert">
+    VIPとしての招待はありません。
+  </div>
 <% end %>
-</table>
+<% @vip_requests.each do |vip_request| %>
+<div class="fav-restaurant listing-item-box" id="fav-restaurant">
+  <div class="row-fluid">
+    <div class="img-unit span3">
+      <%= image_tag 'dessert-02.jpg', class: 'img' %>
+    </div>
+    <div class="restaurant-left span9">
+      <div>
+        <span class="listing-title"><%= vip_request.shop.name %></span> からの招待
+      </div>
+      <div>
+        <%= mmddhhmm( vip_request.created_at) %>
+        <%= link_to '承認', approve_customer_vip_request_path(vip_request),
+          method: :put, confirm: "承認しますか？", class: 'btn btn-ex btn-block' %>
+        <%= link_to '拒否', reject_customer_vip_request_path(vip_request),
+          method: :put, confirm: "拒否しますか？", class: "btn btn-ex btn-block" %>
+      </div>
+      <div class="status">
+        <span class="status-element"><i class="icon-star-empty"></i>23</span>
+        <span class="status-element"><i class="icon-user"></i>23</span>
+        <span class="status-element status-element-last"><i class="icon-comment"></i>23</span>
+      </div>
+    </div>
+  </div>
+  <!-- Fotter -->
+  <div class="fotter row-fluid">
+      <div class="status-mini">
+        <span class="status-element"><i class="icon-star-empty"></i>23</span>
+        <span class="status-element"><i class="icon-user"></i>23</span>
+        <span class="status-element status-element-last"><i class="icon-comment"></i>23</span>
+      </div>
+      <div class="pull-right">
+        【!】ボトルキープ中
+      </div>
+  </div><!-- Fotter end -->
+</div>
+<% end %>
 
 <br />
 

@@ -28,7 +28,7 @@ class VipsController < ShopBase
     @vip = Vip.find(params[:id])
     
     if @vip.update_attributes(params[:vip])
-      redirect_to @vip, notice: 'アカウント情報を更新しました。'
+      redirect_to @vip, notice: 'VIP情報を更新しました。'
     else
       render action: "edit" 
     end
