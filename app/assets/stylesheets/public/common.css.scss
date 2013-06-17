@@ -36,13 +36,9 @@ body{
   display: none;
 }
 
-.listing-title{
-  font-weight: bold;
-}
 
 .red{
   color: #ff0000;
-
 }
 
 // bootstrapのボタンを角張って
@@ -62,16 +58,58 @@ body{
   padding: 5px;
 }
 
+.listing-item-box{
+  @extend .well;
+  @include border-radius(0px);
+  padding: 10px 10px; 
+  border-color: $grayLight;
+
+  a{
+    color: $grayDark;
+  }
+
+  .listing-title{
+    font-weight: bold;
+  }
+
+  .img-unit{
+    padding-right: 10px;
+  }
+  .footer{
+    margin-top: 5px;
+    padding-top: 5px;
+    @include zurui-line-top;
+  }
+  // タイプミス直そう
+  .fotter{
+    margin-top: 5px;
+    padding-top: 5px;
+    @include zurui-line-top;
+  }
+  .img{
+    @include border-radius(4px);
+    border-width: 1px;
+    border-style: solid;
+    border-color: $grayLight;
+    width: 100%;
+  }
+
+}
+
+
+#to_users{
+  .to-user-image{
+    width: 20px;
+  }
+
+}
 
 @media screen and (min-width: 768px) {
 
 }
 
 
-
 @media screen and (max-width: 767px) {
-  body{ 
-  }
 
   .layout-div{
     float: left;
@@ -80,24 +118,5 @@ body{
   .contents-header-row{
     display: none;
   }
-
-  #fav-restaurant {
-    .img-unit {
-      @extend .layout-div;
-      width: 30%;
-      box-sizing: border-box;
-    }
-    .restaurant-left{
-      @extend .layout-div;
-      width: 70%;
-    }
-    .status-mini{
-      display: block;
-    }
-    .status{
-      display: none;
-    }
-  }
-
   
 }

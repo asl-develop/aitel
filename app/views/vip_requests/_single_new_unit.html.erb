@@ -1,9 +1,14 @@
 <div id="invite-unit">
+<div id="to_users">
 <%= form_for  :vip_request, url: { action: :create, method: :post},
   html: {remote: true, id: 'invite-user-form'} do |f| %>
-  <%= user.name %><br> 
+  <%= image_tag 'man_black.png' , class: 'to-user-image' %>
+  <%= user.name %>
+          <i class="icon-star-empty"></i>15 | 
+          <i class="icon-user"></i>23  | 
   <%= f.hidden_field :user_id, value: user.id %>
   <%= f.hidden_field :status, value: VipRequest::STATUS_INVITING %>
-  <input type="button" value="V.I.P.として招待" id="invite-user-btn"> 
+  <input type="button" class="btn btn-ex" value="V.I.P.として招待" id="invite-user-btn"> 
 <% end %>
+</div>
 </div>

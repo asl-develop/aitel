@@ -1,25 +1,33 @@
-<h1>Answer List</h1>
-
-
-<table>
-  <tr>
-    <th>人数</th>
-    <th>日時</th>
-    <th>名前</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @answers.each do |answer| %>
-  <tr>
-    <td><%= answer.want.amount %></td>
-    <td><%= answer.want.from_date %></td>
-    <td><%= answer.want.user.name %></td>
-    <td><%= link_to 'OK', consent_answer_path(answer), method: :put, confirm: "OKと返事しますか？" %></td>
-    <td><%= link_to 'NG', reject_answer_path(answer), method: :put, confirm: "NGと返事しますか？" %></td>
-  </tr>
+<h3>飲食予定一覧</h3>
+<% unless @answers.present? %>
+  <div class="alert">
+    有効なお客様の飲食予定はありません。
+  </div>
 <% end %>
-</table>
+<% @answers.each do |answer| %>
+  <div class="listing-item-box vip-listing" id="vip-listing">
+    <%= link_to answer.want.user do  %>
+    <div class="row-fluid">
+      <div class="img-unit span3">
+        <%= image_tag 'man_black.png' , class: 'answer-vip-image img' %>
+      </div>
+      <div class="vip-listing-left span9">
+        <span class="listing-title"><%= answer.want.user.name %></span>様<br>
+        人数:<span class="red"><%= answer.want.amount %>名</span><br>
+        日時:<span class="red"><%= mmddhhmm_ja( answer.want.from_date) %></span>～
+      <%= link_to 'OKと回答する', consent_answer_path(answer), method: :put, confirm: "OKと返事しますか？ ★簡易メッセージの入力もサポート予定", class: 'btn btn-ex btn-block' %>
+      <%= link_to 'NGと回答する', reject_answer_path(answer), method: :put, confirm: "NGと返事しますか？ ★簡易メッセージの入力もサポート予定" , class: 'btn btn-ex btn-block' %>
+      </div>
+    </div>
+    <% end %>
+    <div class="footer">
+      <div class="status-mini">
+        <span class="status-element"><i class="icon-star-empty"></i>VIPポイント:23</span> | 
+        <span class="status-element"><i class="icon-user"></i>来店回数:15</span>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <br />
 

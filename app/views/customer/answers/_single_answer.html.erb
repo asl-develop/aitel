@@ -1,10 +1,62 @@
-<h5><%= answer.shop.name%></h5>
-<%= answer.display_status %> 
-<% if answer.ok? %>
-  <a href="#myModal<%=answer.id%>" role="button" class="btn" data-toggle="modal">予約する</a>
-<% end %><br>
 
 
+
+<div class="fav-restaurant listing-item-box" id="fav-restaurant">
+  <div class="row-fluid">
+    <div class="img-unit span3">
+      <%= image_tag 'dessert-02.jpg', class: 'img' %>
+    </div>
+    <div class="restaurant-left span9">
+      <div>
+        <span class="listing-title"><%= answer.shop.name %></span>
+      </div>
+      <div>
+        <span>常連Level : <span class="red">超VIP</span></span><br>
+        <span>最後に食事した日 : 6月12日</span>
+      </div>
+      <div class="status-mini">
+        <span class="status-element"><i class="icon-star-empty"></i>23</span>
+        <span class="status-element"><i class="icon-user"></i>23</span>
+        <span class="status-element status-element-last"><i class="icon-comment"></i>23</span>
+      </div>
+    </div>
+  </div>
+  <!-- Fotter -->
+  <div class="fotter row-fluid">
+      <span class="answer">
+      <% if answer.ok? %>
+        <a href="#myModal<%=answer.id%>" role="button" data-toggle="modal" disabled>
+          <div class="answer-box">
+            <span>予約する</span>
+          </div>
+        </a>
+      <% else %>
+        <div class="answer-box">
+          <%= answer.display_status %>
+        </div>
+      <% end %>
+</span>
+  </div><!-- Fotter end -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 予約用 modal window -->
 <div id="myModal<%=answer.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <%= form_for [:customer, @reserve] do |f| %>
   <div class="modal-header">

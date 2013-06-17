@@ -23,44 +23,7 @@
   <div class="tab-content" id="fav-restaurant">
     <div class="tab-pane active" id="tab1">
       <% @user.shops.each do |shop|  %>
-
-
-      <div class="fav-restaurant" >
-        <div class="row-fluid">
-          <div class="img-unit span3">
-            <%= image_tag 'dessert-02.jpg', class: 'img' %>
-          </div>
-          <div class="restaurant-left span9">
-            <div>
-              <span class="listing-title"><%= shop.name %></span>
-            </div>
-            <div>
-              <span>常連Level : <span class="red">超VIP</span></span><br>
-              <span>最後に食事した日 : 2013年6月12日</span>
-            </div>
-            <div class="status">
-              <span class="status-element"><i class="icon-star-empty"></i>23</span>
-              <span class="status-element"><i class="icon-user"></i>23</span>
-              <span class="status-element status-element-last"><i class="icon-comment"></i>23</span>
-            </div>
-            <div>
-              <span class="btn btn-ex">クイック予約</span>
-            </div>
-          </div>
-        </div>
-        <div class="fotter row-fluid">
-            <div class="status-mini">
-              <span class="status-element"><i class="icon-star-empty"></i>23</span>
-              <span class="status-element"><i class="icon-user"></i>23</span>
-              <span class="status-element status-element-last"><i class="icon-comment"></i>23</span>
-            </div>
-            <div class="pull-right">
-              【!】ボトルキープ中
-            </div>
-        </div>
-      </div>
-
-
+        <%= render 'fav_restaurant_unit', shop: shop %>
       <% end %>
 
     </div>
