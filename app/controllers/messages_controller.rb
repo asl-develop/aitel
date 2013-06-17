@@ -1,3 +1,4 @@
+#coding: utf-8
 class MessagesController < ShopBase
 
   def new 
@@ -16,7 +17,8 @@ class MessagesController < ShopBase
       message.save!
     end
     
-    redirect_to new_message_path
+    redirect_to new_message_path, notice: 'メッセージを送信しました'
+
 
   end
 

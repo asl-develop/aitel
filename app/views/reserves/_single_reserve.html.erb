@@ -1,6 +1,23 @@
-<div id="#">
-  <%= reserve.display_status %>
-  <%= reserve.expected_time %>
-  <%= reserve.user.name %>
-  <%= reserve.shops_action_link %>
+<div id="reserve-list" class="listing-item-box">
+  <div class="row-fluid">
+    <div class="img-unit span3">
+      <%= image_tag 'man_black.png', class: 'img' %>
+    </div>
+
+    <div class="vip-listing-left span9">
+      <span class="listing-title"><%= reserve.user.name %></span>
+      <%= reserve.display_status %>
+      <br><%= mmddhhmm_ja(reserve.expected_time ) %>～
+        <div class="status-mini">
+          <span class="status-element"><i class="icon-star-empty"></i>VIPポイント:23</span> | 
+          <span class="status-element"><i class="icon-user"></i>来店回数:15</span>
+        </div>
+    </div>
+  </div>
+  <div class="fotter row-fluid">
+    <div class="action-row">
+      <%= reserve.shops_action_link %>
+    </div>
+  </div><!-- Fotter end -->
 </div>
+
